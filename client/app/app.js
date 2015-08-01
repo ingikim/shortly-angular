@@ -3,7 +3,8 @@ angular.module('shortly', [
   'shortly.links',
   'shortly.shorten',
   'shortly.auth',
-  'ngRoute'
+  'ngRoute',
+  'ngAnimate'
 ])
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
@@ -28,7 +29,6 @@ angular.module('shortly', [
       controller: 'AuthController'  
     })
     // Your code here
-    console.log('Ran route');
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
