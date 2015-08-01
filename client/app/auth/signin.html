@@ -1,9 +1,20 @@
 <div id='signin'>
-  <h1>signin</h1>
-  <form name="signinForm" ng-submit='signin()'>
-    <input type='text'ng-model='user.username'>
-    <input type="password" ng-model='user.password'>
-    <button>signin</button>
+  <h1>Sign In</h1>
+  <form name="signinForm" ng-submit='signup()'>
+    <input type='text' name='username' ng-model='user.username' ng-minlength='8' ng-maxlength='20'>
+    <input type="password" name='password' ng-model='user.password' ng-minlength='8' ng-maxlength='20'>
+    <button>Sign In</button>
+    <div role="alert">
+        <span class="error" ng-show="signinForm.username.$error.minlength">
+          Invalid username! Too Short</span>
+        <span class="error" ng-show="signinForm.username.$error.maxlength">
+          Invalid username! Too Long</span>
+
+        <span class="error" ng-show="signinForm.password.$error.minlength">
+          Invalid password! Too Short</span>
+        <span class="error" ng-show="signinForm.password.$error.maxlength">
+          Invalid password! Too Long</span>
+      </div>
   </form>
   <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
 </div>

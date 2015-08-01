@@ -6,10 +6,10 @@
     </ul>
   </div>
 
-
+  <input type='text' ng-model='linkFilter'>
   <ul>
-    <li ng-repeat="link in data" ng-click="followLink($index)">
-    {{link}}
+    <li ng-repeat="link in data | filter:{title:linkFilter}" ng-click="followLink($index)">
+    {{link    }}
     </li>
   </ul>
 </div>
