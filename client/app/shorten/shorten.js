@@ -13,14 +13,7 @@ angular.module('shortly.shorten', [])
       console.log('Bad URL');
     }
   };
-  
-  $scope.indexClick = function () {
-    $location.path('/links');
-  };
 
-  $scope.createClick = function () {
-    $location.path('/shorten');
-  };
 
   // Your code here
 });

@@ -2,32 +2,41 @@ angular.module('shortly', [
   'shortly.services',
   'shortly.links',
   'shortly.shorten',
+  'shortly.homepage',
   'shortly.auth',
+  'ui.router',
   'ngRoute',
   'ngAnimate'
 ])
-.config(function($routeProvider, $httpProvider) {
-  $routeProvider
-    .when('/signin', {
+.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
+  $urlRouterProvider.otherwise("/signin");
+
+  $stateProvider
+    .state('signin', {
+      url: '/signin',
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController'
     })
-    .when('/signup', {
+    .state('signup', {
+      url: '/signup',
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
-    .when('/links', {
+    .state('homepage', {
+      url: '/homepage',
+      templateUrl: 'app/homepage/homepage.html',
+      controller: 'HomepageController'
+    })
+    .state('homepage.links', {
+      url: '/links',
       templateUrl: 'app/links/links.html',
       controller: 'LinksController'
     })
-    .when('/shorten', {
+    .state('homepage.shorten', {
+      url: '/shorten',
       templateUrl: 'app/shorten/shorten.html',
       controller: 'ShortenController'
-    })
-    .when('/', {
-    templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'  
-    })
+    });
     // Your code here
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
@@ -63,4 +72,9 @@ angular.module('shortly', [
       $location.path('/signin');
     }
   });
+})
+.directive('linkDisplay', function(){
+  return {
+    template: "<div class='info'><div class='visits'><span class='count'>{{link.visits}}</span>Visits</div><div class='title'>{{link.title}}</div><div class='original'>{{link.url}}</div><a href='{{link.base_url}}/{{link.code}}'>{{link.base_url}}/{{link.code}}</a></div>"
+  };
 });

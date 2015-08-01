@@ -1,12 +1,5 @@
 <div id='container'>
 
-  <div class='navigation'>
-    <ul>
-      <li><a ng-click='indexClick()' class ='index'>All Links</a></li>
-      <li><a ng-click='createClick()' class ='create'>Shorten</a></li>
-    </ul>
-  </div>
-
   <form name="urlform" ng-submit='addLink()'>
     <input type='url' name='input' ng-model='link.url' required>
     <button>Submit url</button>

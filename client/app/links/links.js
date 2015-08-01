@@ -4,18 +4,11 @@ angular.module('shortly.links', [])
   $scope.data = {};
 
   $scope.getLinks = function () {
+    
     Links.getLinks()
     .then(function(data){
       $scope.data = data;
     });
-  };
-
-  $scope.indexClick = function () {
-    $location.path('/links');
-  };
-
-  $scope.createClick = function () {
-    $location.path('/shorten');
   };
 
 
