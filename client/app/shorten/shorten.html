@@ -1,5 +1,23 @@
 <div id='container'>
-<!-- Your code here -->
+
+  <div class='navigation'>
+    <ul>
+      <li><a ng-click='indexClick()' class ='index'>All Links</a></li>
+      <li><a ng-click='createClick()' class ='create'>Shorten</a></li>
+    </ul>
+  </div>
+
+  <form name="urlform" ng-submit='addLink()'>
+    <input type='url' name='input' ng-model='link.url' required>
+    <button>Submit url</button>
+    <div>  </div>
+    <div role="alert">
+      <span class='error' ng-show="urlform.input.$error.required">
+        Required!</span>
+      <span class='error' ng-show="urlform.input.$error.url">
+        Not valid url!</span>
+    </div>
+  </form>
 
 </div>
 
